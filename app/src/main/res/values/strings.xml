@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Baget</string>
+    <string name="title_feed">Feed</string>
+    <string name="title_news">News</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_files">Files</string>
+    <string name="title_umk">Umk</string>
+    <string name="login">Login</string>
+    <string name="profile">Profile</string>
+    <string name="raspisanie_usual">
+        1 пара
+        08:30 - 09:15, 09:20 - 10:05\n2 пара
+        10:15 - 11:00, 11:05 - 11:50\n3 пара
+        12:35 - 13:20, 13:25 - 14:10\n4 пара
+        14:20 - 15:05, 15:10 - 15:55\n5 пара
+        16:05 - 16:50, 16:55 - 17:40\n6 пара
+        17:50 - 18:35, 18:40 - 19:25
+    </string>
+</resources>

@@ -16,4 +16,7 @@
         16:05 - 16:50, 16:55 - 17:40\n6 пара
         17:50 - 18:35, 18:40 - 19:25
     </string>
+    <string name="exit">Выйти</string>
+    <string name="settings">Settings</string>
+    <string name="app_info">App info</string>
 </resources>

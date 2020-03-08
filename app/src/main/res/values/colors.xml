@@ -6,4 +6,6 @@
     <color name="color_main">#1A3280</color>
     <color name="white">#FFFFFF</color>
     <color name="cool">#E6E6E6</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
 </resources>

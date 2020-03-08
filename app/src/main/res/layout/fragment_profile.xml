@@ -1,24 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="40dp"
+        >
 
         <TextView
-            android:id="@+id/text_profile"
+            android:id="@+id/profile_image"
+            android:text="Profile image"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/cool"
+            />
+
+        <TextView
+            android:id="@+id/profile_login"
+            android:text="логин anyone123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_image"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/profile_group"
+            android:text="группа ПЕ-71б"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_login"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/profile_name"
             android:text="Profile here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/profile_image"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_main"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/profile_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="@string/settings"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_below="@id/view1"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_main"
+            android:layout_below="@+id/profile_settings"
+            />
+
+        <TextView
+            android:id="@+id/profile_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_info"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_below="@id/view2"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_main"
+            android:layout_below="@id/profile_info"
+            />
+
+        <TextView
+            android:id="@+id/profile_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            android:text="@string/exit"
+            android:layout_below="@+id/view3"
+            android:layout_marginTop="50dp"
+            />
+    </RelativeLayout>
 </layout>

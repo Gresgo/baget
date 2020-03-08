@@ -5,6 +5,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.urtisi.baget.ui.feed.site.OnRSSReadyCallback
+import com.urtisi.baget.util.CheckConnection
 import com.urtisi.baget.util.RSSModel
 import com.urtisi.baget.util.RSSParser
 
@@ -23,7 +24,10 @@ class FeedViewModel : ViewModel(),
      * start getting data from website and receive it in interface
      */
     fun loadData(){
+        //check internet connection first
+        if (!CheckConnection().isConnected()) return
         isRefreshing.set(true)
+        feedList.value = ArrayList()
         val rss = RSSParser(this)
         rss.execute()
     }

@@ -22,8 +22,7 @@ class MainNewsFragment : Fragment() {
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_news_main, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_news_main, container, false)
 
         return binding.root
     }
@@ -31,10 +30,7 @@ class MainNewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.newsPager.adapter =
-            PagerAdapter(
-                fragmentManager!!
-            )
+        binding.newsPager.adapter = PagerAdapter(activity!!.supportFragmentManager)
         binding.newsTab.setupWithViewPager(binding.newsPager)
     }
 

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.urtisi.baget.R
 import com.urtisi.baget.databinding.FragmentFilesBinding
 
@@ -18,7 +18,7 @@ class FilesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        filesViewModel = ViewModelProviders.of(this).get(FilesViewModel::class.java)
+        filesViewModel = ViewModelProvider(this).get(FilesViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_files, container, false)
         binding.viewModel = filesViewModel
         binding.executePendingBindings()

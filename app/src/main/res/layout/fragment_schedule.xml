@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/raspisanie_usual"
+                android:text="@string/schedule_usual"
                 android:textSize="18sp"
                 />
         </LinearLayout>

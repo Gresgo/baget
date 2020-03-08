@@ -2,12 +2,12 @@
     <string name="app_name">Baget</string>
     <string name="title_feed">Feed</string>
     <string name="title_news">News</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_schedule">Schedule</string>
     <string name="title_files">Files</string>
     <string name="title_umk">Umk</string>
-    <string name="login">Login</string>
-    <string name="profile">Profile</string>
-    <string name="raspisanie_usual">
+    <string name="title_login">Login</string>
+    <string name="title_profile">Profile</string>
+    <string name="schedule_usual">
         1 пара
         08:30 - 09:15, 09:20 - 10:05\n2 пара
         10:15 - 11:00, 11:05 - 11:50\n3 пара

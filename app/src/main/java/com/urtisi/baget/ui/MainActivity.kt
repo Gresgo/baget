@@ -20,13 +20,19 @@ import com.urtisi.baget.ui.umk.UmkFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var newsFragment: Fragment
-    private lateinit var dashboardFragment: Fragment
+    private lateinit var scheduleFragment: Fragment
     private lateinit var filesFragment: Fragment
     private lateinit var umkFragment: Fragment
     private lateinit var profileFragment: Fragment
     private lateinit var binding: ActivityMainBinding
     private val fm = supportFragmentManager
     private lateinit var activeFragment: Fragment
+
+    private lateinit var TAG_NEWS: String
+    private lateinit var TAG_SCHEDULE: String
+    private lateinit var TAG_FILES: String
+    private lateinit var TAG_UMK: String
+    private lateinit var TAG_PROFILE: String
 
     /**
      * activity after logging in, contains all bottom menu screens fragments
@@ -39,47 +45,61 @@ class MainActivity : AppCompatActivity() {
             R.layout.activity_main
         )
         binding.navView.setOnNavigationItemSelectedListener(navListener)
-        supportActionBar!!.title = "News"
 
+        TAG_NEWS = applicationContext.getString(R.string.title_news)
+        TAG_SCHEDULE = applicationContext.getString(R.string.title_schedule)
+        TAG_FILES = applicationContext.getString(R.string.title_files)
+        TAG_UMK = applicationContext.getString(R.string.title_umk)
+        TAG_PROFILE = applicationContext.getString(R.string.title_profile)
+
+        /**
+         * initialize fragments when app is open
+         */
         if (savedInstanceState == null) {
+            supportActionBar!!.title = TAG_NEWS
             profileFragment = ProfileFragment()
             umkFragment = UmkFragment()
             filesFragment = FilesFragment()
-            dashboardFragment = ScheduleFragment()
+            scheduleFragment = ScheduleFragment()
             newsFragment = MainNewsFragment()
-            fm.beginTransaction().add(R.id.nav_host_fragment, profileFragment, "profile").hide(profileFragment).commit()
-            fm.beginTransaction().add(R.id.nav_host_fragment, umkFragment, "umk").hide(umkFragment).commit()
-            fm.beginTransaction().add(R.id.nav_host_fragment, filesFragment, "files").hide(filesFragment).commit()
-            fm.beginTransaction().add(R.id.nav_host_fragment, dashboardFragment, "schedule").hide(dashboardFragment).commit()
-            fm.beginTransaction().add(R.id.nav_host_fragment, newsFragment, "news").commit()
+            fm.beginTransaction().add(R.id.nav_host_fragment, profileFragment, TAG_PROFILE).hide(profileFragment).commit()
+            fm.beginTransaction().add(R.id.nav_host_fragment, umkFragment, TAG_UMK).hide(umkFragment).commit()
+            fm.beginTransaction().add(R.id.nav_host_fragment, filesFragment, TAG_FILES).hide(filesFragment).commit()
+            fm.beginTransaction().add(R.id.nav_host_fragment, scheduleFragment, TAG_SCHEDULE).hide(scheduleFragment).commit()
+            fm.beginTransaction().add(R.id.nav_host_fragment, newsFragment, TAG_NEWS).commit()
             activeFragment = newsFragment
         } else {
-
+            /**
+             * restore fragment view when activity has been destroyed
+             */
             val fragments = ArrayList<Fragment?>()
-            profileFragment = fm.findFragmentByTag("profile")!!
+            profileFragment = fm.findFragmentByTag(TAG_PROFILE)!!
             fragments.add(profileFragment)
-            umkFragment = fm.findFragmentByTag("umk")!!
+            umkFragment = fm.findFragmentByTag(TAG_UMK)!!
             fragments.add(umkFragment)
-            filesFragment = fm.findFragmentByTag("files")!!
+            filesFragment = fm.findFragmentByTag(TAG_FILES)!!
             fragments.add(filesFragment)
-            dashboardFragment = fm.findFragmentByTag("schedule")!!
-            fragments.add(dashboardFragment)
-            newsFragment = fm.findFragmentByTag("news")!!
+            scheduleFragment = fm.findFragmentByTag(TAG_SCHEDULE)!!
+            fragments.add(scheduleFragment)
+            newsFragment = fm.findFragmentByTag(TAG_NEWS)!!
             fragments.add(newsFragment)
 
             fragments.forEach {
                 it?.let {
                     if (!it.isHidden) {
                         activeFragment = it
-
+                        supportActionBar!!.title = activeFragment.tag
                     }
                 }
             }
-            Log.i("fragments", "active fragment $activeFragment")
+            Log.i("fragments", "restored active fragment $activeFragment")
         }
 
     }
 
+    /**
+     * override nav bar listener
+     */
     private val navListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             //TODO: add backstack class/handling
@@ -87,30 +107,33 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_news_main ->{
                     fm.beginTransaction().hide(activeFragment).show(newsFragment).commit()
                     activeFragment = newsFragment
-                    supportActionBar!!.title = "News"
+                    supportActionBar!!.title = TAG_NEWS
                 }
 
                 R.id.navigation_dashboard ->{
-                    fm.beginTransaction().hide(activeFragment).show(dashboardFragment).commit()
-                    activeFragment = dashboardFragment
-                    supportActionBar!!.title = "Dashboard"
+                    fm.beginTransaction().hide(activeFragment).show(scheduleFragment).commit()
+                    activeFragment = scheduleFragment
+                    supportActionBar!!.title = TAG_SCHEDULE
                 }
 
                 R.id.navigation_files -> {
                     fm.beginTransaction().hide(activeFragment).show(filesFragment).commit()
                     activeFragment = filesFragment
-                    supportActionBar!!.title = "Files"
+                    supportActionBar!!.title = TAG_FILES
                 }
 
                 R.id.navigation_umk -> {
                     fm.beginTransaction().hide(activeFragment).show(umkFragment).commit()
                     activeFragment = umkFragment
-                    supportActionBar!!.title = "Umk"
+                    supportActionBar!!.title = TAG_UMK
                 }
             }
             true
         }
 
+    /**
+     * menu for profile button
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -121,7 +144,7 @@ class MainActivity : AppCompatActivity() {
         if (item!!.itemId == R.id.action_bar_profile){
             fm.beginTransaction().hide(activeFragment).show(profileFragment).commit()
             activeFragment = profileFragment
-            supportActionBar!!.title = "Profile"
+            supportActionBar!!.title = TAG_PROFILE
             return true
         }
         return super.onOptionsItemSelected(item)
